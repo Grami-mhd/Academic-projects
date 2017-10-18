@@ -1,0 +1,226 @@
+<div class="content" id="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+
+
+                        <nav class="navbar navbar-default navbar-fixed">
+                            {% if forum is null %}
+                                {#  nothing to be done for all
+
+                                #}
+
+                            {%  else %}
+                                <ul class="nav navbar-nav navbar-left">
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            {% if forum.fkForumOwnerid.picture is null %}
+                                                <img src="{{asset ('bundles/admin/assets/img/UserMiniImage.png')}}">
+                                            {% else %}
+                                                <img alt="Embedded Image" src="data:image/png;base64,{{ images[forum.fkForumOwnerid.id] }}" height="50" width="50">
+                                            {% endif %}
+                                            {{ forum.fkForumOwnerid.firstname }} {{ forum.fkForumOwnerid.lastname }}
+
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">First Name :{{ forum.fkForumOwnerid.firstname}}</a></li>
+                                            <li><a href="#">Last Name :{{ forum.fkForumOwnerid.lastname}}</a></li>
+                                            <li><a href="#">Email :{{ forum.fkForumOwnerid.email}}</a></li>
+                                            <li><a href="#">Phone :{{ forum.fkForumOwnerid.phone}}</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                </ul>
+                            {% endif %}
+
+                            <ul class="nav navbar-nav navbar-right">
+                                {% if forum is null %}
+                                    <li>
+                                        <a href="#">
+                                            There is no reports for today
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="#">
+                                            View The Forum Page
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="../Admin_rmessages/{{ page-2 }}">
+                                            Previous
+                                        </a>
+                                    </li>
+
+
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="pe-7s-note2"></i>{{ page }} /{{ pages }}
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            {% for i in 1..pages %}
+                                                <li><a href="../Admin_rmessages/{{ i-1 }}"><i class="pe-7s-note2"></i> {{ i }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="../Admin_rmessages/{{ page }}">
+                                            Next
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        {% if forum is not null %}
+                            <b> Subject :</b>{{ forum.subject }}
+                        {% endif %}
+                    </div>
+                    <div class="content all-icons">
+                        <div class="row">
+                            <div class="font-icon-detail">
+
+                                {% if forum is not null %}
+                                    <div class="content" >
+                                        <div class="table-full-width" >
+                                            <table class="table" >
+                                                <tbody >
+                                                {% for msg in messages %}
+                                                    <tr >
+                                                        {% if msg in reported %}
+
+                                                            <td style="text-align: left"><p>{{ msg.text }}</p></td>
+                                                            <td class="td-actions text-right">
+
+                                                                <ul class="nav navbar-nav navbar-right">
+
+                                                                    <li class="dropdown">
+                                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-weight: bold">
+                                                                            other
+                                                                            <b class="caret"></b>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu">
+
+                                                                            <li><a href="#">Reported By :<br>
+                                                                                    {% for rm in msgreports %}
+                                                                                        {% if rm.fkMessage.id ==msg.id %}
+                                                                                            {{ rm.fkReporter.firstname }},{{ rm.fkReporter.lastname }}<br>
+                                                                                        {% endif %}
+                                                                                    {% endfor %}
+                                                                                </a></li>
+
+                                                                            <li class="divider"></li>
+                                                                            <li><a href="#" class="otherps" id="not{{ msg.id }}">notify the user of trespassing the rules</a></li>
+                                                                            <li><a href="#" class="otherps" id="ban{{ msg.id }}">Ban him from this Discussion</a></li>
+                                                                            <li><a href="#" class="otherps" id="del{{ msg.id }}" style="color: red">delete this user</a></li>
+                                                                        </ul>
+                                                                    </li>
+
+                                                                </ul>
+
+                                                                <button  type="button" rel="tooltip" title="" id="dec{{ msg.id }}" class="btn btn-info btn-simple btn-xs" data-original-title="decline report" >
+                                                                    <i class="pe-7s-like2"></i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="" id="acc{{ msg.id }}" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove message">
+                                                                    <i class="pe-7s-close-circle"></i>
+                                                                </button>
+
+                                                            </td>
+                                                        {% else %}
+                                                            <td style="text-align: left" colspan="2">{{ msg.text }}</td>
+
+                                                        {% endif %}
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="footer">
+                                            <hr>
+                                            <div class="stats">
+                                                <a href="../Admin_rmessages/{{ page-1 }}"><i class="fa fa-history"></i> Update ?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("button").click(
+                function () {
+                    var id =$(this).attr("id");
+                    var type= id.substr(0,3);
+                    id=id.substr(3,id.length);
+                    if(type=="acc"){
+                        $.ajax({
+                            url: "../deletemsg/" + id+"/{{ page }}",
+                            success :function (result) {
+                                $("#content").html(result);
+                            }
+                        })
+                    }else if(type=="dec"){
+                        $.ajax({
+                            url: "../declinemsgreport/" + id+"/{{ page }}",
+                            success :function (result) {
+                                $("#content").html(result);
+                            }
+                        })
+                    }
+
+                }
+        );
+        $(".otherps").click(
+                function () {
+                    var id =$(this).attr("id");
+                    var type= id.substr(0,3);
+                    id=id.substr(3,id.length);
+                    if(type=="ban"){
+                        $.ajax({
+                            url: "../banuser/" + id+"/{{ page }}",
+                            success :function (result) {
+                                $("#content").html(result);
+                            }
+                        })
+                    }else if(type=="not"){
+                        $.ajax({
+                            url: "../notifyuser/" + id+"/{{ page }}",
+                            success :function (result) {
+                                $("#content").html(result);
+                            }
+                        })
+                    }
+                    else if(type=="del"){
+                        if(confirm("confirm deleting the messages owner")){
+                            $.ajax({
+                                url: "../deletemsgowner/" + id+"/{{ page }}",
+                                success :function (result) {
+                                    $("#content").html(result);
+                                }
+                            })}
+                    }
+                }
+        );
+    });
+</script>

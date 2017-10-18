@@ -1,0 +1,237 @@
+
+{% extends "GuestHouseBundle::mother.html.twig" %}
+
+
+{% block cont %}
+
+
+
+
+    <!-- ######### CSS STYLES ######### -->
+
+    <link rel="stylesheet" href="{{asset ('bundles/nabout/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset ('bundles/nabout/css/bootstrap-responsive.css')}}">
+    <link rel="stylesheet" href="{{asset ('bundles/nabout/css/custom-styles.css')}}" />
+
+    <link rel="stylesheet" href="{{asset ('bundles/nabout/css_home/reset.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{asset ('bundles/nabout/css_home/style.css')}}" type="text/css" />
+
+    <link rel="stylesheet" href="{{asset ('bundles/nabout/css_home/font-awesome/css/font-awesome.min.css')}}">
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content_top">
+    <div id="cont" class="container">
+        <br>
+        <strong><h4 class="m_3">Forums</h4></strong>
+
+        <div class="row">
+<table>
+
+            <tr>
+                <td>
+                <div class="span8 blog">
+                    <form method="POST" name="forumcreate">
+                    <h3 class="m_3">Create A Forum</h3>
+                    <h3><textarea placeholder="Type a subject here ..." id="subj" name="sujet" class="span8 blog"></textarea></h3>
+                    <div class="row">
+                        <div class="span8 blog" style="padding-left: 15px">
+                            <input type="submit" class="btn btn-inverse" value="Create Forum" name="createforum" >
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="span8 blog">
+                        <h3 class="m_3">My Forums</h3>
+                        <div id="myforums">
+                        {% for f in forum %}
+                            <article class="clearfix">
+
+                                <h6 class="title-bg" id="h{{ f.id }}"> <a href="singleforum/{{ f.id }}" >{{ f.subject }} </a> </h6>
+
+                                <div class="post-summary-footer">
+                                    <ul class="post-data-3">
+
+
+                                        <li><i class="icon-user"></i><a href="#" style="color: #0000a2">{{ f.fkForumOwnerid.firstname }} {{ f.fkForumOwnerid.lastname }}</a> </li>
+                                        <li><i class="icon-comment"></i> {{ nbr[f.id] }} Comments</li>
+                                        <li id="d{{ f.id }}" class="delete"><i class="icon-remove-sign" style="color: red"></i> <a href="#" style="color: red">Delete</a></li>
+
+
+
+                                    </ul>
+                                </div>
+                            </article>
+                        {% endfor  %}
+                        </div>
+                        <h3 class="m_3">My Old Discussions</h3>
+                        {% for f in oldDisc %}
+                            {% if f in myoldDisc %}
+                                <article class="clearfix">
+
+                                    <h6 class="title-bg" id="h{{ f.id }}"> <a href="singleforum/{{ f.id }}" >{{ f.subject }} </a> </h6>
+
+                                    <div class="post-summary-footer">
+                                        <ul class="post-data-3">
+
+
+                                            <li><i class="icon-user"></i><a href="#" style="color: #0000a2">{{ f.fkForumOwnerid.firstname }} {{ f.fkForumOwnerid.lastname }}</a> </li>
+                                            <li><i class="icon-comment"></i> {{ nbrmsg[f.id] }} Comments</li>
+                                            <li id="f{{ f.id }}" class="delete"><i class="icon-remove-sign" style="color: red"></i> <a href="#" style="color: red">Delete</a></li>
+
+
+
+
+                                        </ul>
+                                    </div>
+                                </article>
+                            {% else %}
+                                <article class="clearfix">
+
+                                    <h6 class="title-bg"> <a href="singleforum/{{ f.id }}" >{{ f.subject }} </a> </h6>
+
+                                    <div class="post-summary-footer">
+                                        <ul class="post-data-3">
+
+
+                                            <li><i class="icon-user"></i><a href="#" style="color: #0000a2">  {{ f.fkForumOwnerid.firstname }} {{ f.fkForumOwnerid.lastname }}</a> </li>
+                                            <li><i class="icon-comment"></i> {{ nbrmsg[f.id] }} Comments</li>
+
+                                            <li><i class="icon-eject"></i> <a href="#" style="color: red">Report</a></li>
+
+                                        </ul>
+                                    </div>
+                                </article>
+                            {% endif %}
+                        {% endfor  %}
+
+                        <!-- Pagination -->
+
+                    </div> <!--end span8 blog-->
+                </td>
+
+
+                <td style="padding-left: 100px">
+                    <div>
+
+                        <!--Search-->
+                        <section>
+                            <div class="input-append">
+
+                                <input id="appendedInputButton" size="16" type="text" placeholder="Search"><button class="btn" type="button"><i class="icon-search"></i></button>
+
+                            </div>
+                        </section>
+
+
+
+                        <div id="555">
+
+                        </div>
+
+                        <!--Popular Posts-->
+                        <h3 style="color: #ff3030">Popular Forums</h3><br>
+
+                        <ul class="popular-posts">
+                            {% for n , f in pop %}
+
+                                <li><h6 class="title-bg"><a href="singleforum/{{ f.id }}" >{{ f.subject }} </a></h6>
+
+                                    <div class="post-summary-footer">
+                                        <ul class="post-data-3">
+
+                                            <li><i class="icon-user"></i><a href="#" style="color: #0000a2">   {{ f.fkForumOwnerid.firstname }} {{ f.fkForumOwnerid.lastname }}  |  <i class="icon-comment"></i> <a href="#">{{ n }} Comments</a> </a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                            {% endfor %}
+
+
+                        </ul>
+
+                    </div> <!--end span4 blog-->
+                </td>
+            </tr>
+
+</table>
+
+
+
+
+
+
+        </div><!-- end row -->
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $(document).ready(
+            function () {
+                $("#appendedInputButton").keyup(
+                        function () {
+                            var key=document.getElementById('appendedInputButton').value;
+                            $.ajax({
+                                url : "researchforums/"+key ,
+                                success : function (result) {
+                                    $("#555").html(result);
+                                }
+                            })
+                        }
+
+                );
+
+                $(".delete").click(
+                        function(){
+                            var id=$(this).attr("id");
+                            id = id.substr(1,id.length);
+                            $.ajax({
+                                url: "deleteforum/"+id,
+                                success :function (result) {
+                                    $("#cont").html(result)
+                                }
+                            })
+                        }
+                );
+
+            }
+
+    );
+
+
+
+</script>
+
+<script>
+
+$(document).ready(
+function () {
+$("#forums_u").attr("class","active scroll");
+
+}
+);
+</script>
+{% endblock %}
+

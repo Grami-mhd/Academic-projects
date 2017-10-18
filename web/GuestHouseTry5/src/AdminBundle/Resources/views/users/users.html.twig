@@ -1,0 +1,89 @@
+
+    <center>
+        <table>
+            {% for key , user in users %}
+                {% if loop.index-1 % 3 ==0 %}
+                    <tr>
+                    <td>
+                {% else %}
+                    <td>
+                {% endif %}
+
+                <div class="card" style="padding-left: 10px; padding-right: 10px">
+                    <div class="header">
+                        <h4 class="title">{{ user.firstname }} {{ user.lastname }}</h4>
+                        <p class="category">{{ user.email }}, {{ user.phone }}</p>
+                    </div>
+                    <div class="content">
+                        {% if user.picture is null %}
+                            <img src="{{asset ('bundles/guesthouse/UserImage.png')}}" alt="" height="270" width="245">
+                        {% else %}
+                            <img alt="Embedded Image" src="data:image/png;base64,{{ pictures[user.id] }}" height="270" width="245">
+                        {% endif %}
+                        <div class="footer">
+
+                            <hr>
+                            <div class="stats">
+                                <i class="pe-7s-angle-right-circle"></i>IS ADMIN <input type="checkbox" id="{{ user.id }}" class="type" {% for role in user.roles %}
+                                    {% if role =="ROLE_ADMIN" %}
+                                        checked
+                                    {% endif %}
+                                {% endfor %}
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+                {% if loop.index %3 ==0 %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </center>
+
+</div>
+    <script>
+        $(document).ready(
+                function () {
+                    $(".type").attr("disabled", true);
+                    $("#555").change(function() {
+                                if($(this).is(':checked')){
+                                    $(".type").removeAttr("disabled");
+                                }
+                                else
+                                {
+                                    $(".type").attr("disabled", true);
+                                }
+                            }
+
+                    );
+                    
+                    $(".type").change(
+                            function () {
+                                var p =$(this).attr("id");
+                                if($(this).is(':checked')){
+                                    $.ajax({
+                                        url: "toadmin/" + p,
+                                        success :function (result) {
+                                            $("#notifs").html(result);
+                                        }
+                                    })
+                                }else{
+                                    $.ajax({
+                                        url: "unadmin/" + p,
+                                        success :function (result) {
+                                            $("#notifs").html(result);
+                                        }
+                                    })
+                                }
+
+                            }
+                    );
+
+                }
+
+
+
+        );
+    </script>

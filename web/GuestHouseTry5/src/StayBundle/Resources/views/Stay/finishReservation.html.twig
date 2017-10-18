@@ -1,0 +1,154 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Realist an Real_Estate Category Flat Bootstarp Resposive Website Template | About :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Realist Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="{{asset ('bundles/stay/assets/css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{asset ('bundles/stay/assets/js/jquery-1.11.1.min.js')}}"></script>
+    <!-- Custom Theme files -->
+    <link href="{{asset ('bundles/stay/assets/css/style.css')}}" rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet:100,300,400,500,600,700,800,900' type='text/css'>
+    <!-- Menu -->
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="{{asset ('bundles/stay/assets/fonts/css/font-awesome.min.css')}}">
+    <!----font-Awesome----->
+    <script type="text/javascript" src="{{asset ('bundles/stay/assets/js/jquery.fancybox.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset ('bundles/stay/assets/css/jquery.fancybox.css')}}" media="screen" />
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.fancybox').fancybox();
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <div class="col-xs-4">
+        <div class="logo">
+            <a href="index.html"><img src="{{asset ('bundles/stay/assets/images/guesthouse.png')}}" alt=""/></a>
+        </div>
+    </div>
+    <div class="col-xs-8 header_right">
+        <span class="menu"></span>
+        <div class="top-menu">
+            <ul>
+                <li><a href="home_u"><i class="fa fa-home"> </i>Home</a></li>
+                <li><a href="profile"><i class="fa fa-star"> </i> Profile</a></li>
+                <li><a href="stays"><i class="fa fa-thumbs-up"> </i>Satys</a></li>
+                <li><a href="hosting"><i class="fa fa-picture-o"> </i>Hosting</a></li>
+                <li><a class="active scroll" href="finish"><i class="fa fa-picture-o"> </i>Finish</a></li>
+                <li><a href="contact.html"><i class="fa fa-envelope-o"> </i>Contact</a></li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        <!-- script for menu -->
+        <script>
+            $( "span.menu" ).click(function() {
+                $( ".top-menu" ).slideToggle( "slow", function() {
+                    // Animation complete.
+                });
+            });
+        </script>
+        <!-- script for menu -->
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <div class="service_grid">
+
+
+                <div class="standards">
+
+                    <div class="standard_content" style="height: 255px;">
+                        <div class="standard active" data-selector="1">
+                            <ul class="single_grid">
+
+                                {% for i in img%}
+                                    <li><img alt="Embedded Image" src="data:image/png;base64,{{ i }}"  height="200" width="200" /></li>
+                                {% endfor %}
+                                {#{% for i in img |length ..2 %}
+                                    <li><img src="{{asset ('bundles/stay/assets/images/houseicon.png')}}"  alt="" height="200" width="200"/></li>
+                                {% endfor %}
+                                #}
+                                <div class="clearfix"> </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <form method="post">
+                    <div class="col-md-7 single_box1">
+
+                            {% for i, d in date %}
+                               <table class="single_desc">
+                                    <div class="col-md-3 service_box">
+
+                                            <tr> <input type="checkbox" class="test" name="{{ i }}">{{ d.date| date("d/m/Y") }}</tr>
+
+                                    </div>
+                               </table>
+                            {% endfor %}
+
+                        <center><input type="submit" value="Buy" id="buy"></center>
+                        </table>
+                    </div>
+                    </form>
+                    <div class="col-md-4">
+                        <!-- user profile-->
+                        <div class="card card-user">
+                            <div class="content" id="finish">
+
+                            </div>
+                            <hr>
+
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+<br><hr>
+        <div class="copy">
+            <p>© 2017 All Rights Reseverd Template by <a href="">Guest House</a> </p>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    $(document).ready(
+            function(){
+                var i=0;
+                $(".test").change(
+                        function(){
+                            if($(this).is(":checked")){
+                                i++;
+                            }
+                            else {
+                                i--;
+                            }
+                            $.ajax({
+                                url:"../confirm/"+i* parseInt({{ h.price }}),
+                                success : function (result) {
+                                    $("#finish").html(result);
+                                }
+                            })
+                        }
+                );
+
+            }
+    );
+</script>
+</html>

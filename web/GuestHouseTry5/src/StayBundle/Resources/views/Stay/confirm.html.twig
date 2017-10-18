@@ -1,0 +1,18 @@
+<h3>
+    {% if (reste >= 0 )%}
+        <h3>votre solde est suffisant ,votre nouveau solde est {{ reste }}</h3>
+    {% else %}
+        <h3>votre solde est insuffisant, il vous manque {{ reste }}</h3>
+    {% endif %}
+</h3>
+<script>
+        $(document).ready(
+                function () {
+                        {% if reste <= 0 %}
+                                $('#buy').attr('disabled',true);
+                        {% else %}
+                                $('#buy').removeAttr('disabled');
+                        {% endif %}
+                }
+        );
+</script>

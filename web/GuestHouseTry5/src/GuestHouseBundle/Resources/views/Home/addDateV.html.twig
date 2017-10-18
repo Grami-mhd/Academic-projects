@@ -1,0 +1,34 @@
+<div id="888">
+    <table>
+
+        <div class="about">
+            {% for m in add %}
+                {% if loop.index-1 % 3 ==0 %}
+                    <tr class="service_grid">
+                    <td class="col-md-3 service_box">
+                {% else %}
+                    <td class="col-md-3 service_box">
+                {% endif %}
+                <div>
+                    {% if m.picture1 is null %}
+                        <img  src="{{asset ('bundles/admin/assets/img/UserMiniImage.png')}}" alt="..."/>
+                    {% else %}
+                        <img   alt="Embedded Image" src="data:image/png;base64,{{ picture1[m.id] }}" height="148" width="198">
+                        {#<div class="box_type">$&nbsp;{{ m.price }}</div>#}
+                    {% endif %}
+
+                    <h3 style="color: #a1eb3a; font-weight: bold">{{ m.country }} {{ m.town }}</h3>
+                    <h5 style="color: #000000; font-weight: normal">{{ m.price }}dT</h5>
+                    <!--<h5 style="color: #6256eb; font-weight: bold"><a href="single.html">Add date availiability</a></h5>-->
+                </div>
+                </td>
+                {% if loop.index %3 ==0 %}
+                    </tr>
+                {% endif %}
+            {%  endfor %}
+
+            <div class="clearfix"> </div>
+            </tr>
+        </div>
+    </table>
+</div>

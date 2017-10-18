@@ -1,0 +1,121 @@
+
+<div class="content" id="content">
+    {% for forum in forums %}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <h4 class="dropdown" style="padding-bottom: 20px" >
+
+                                    <a  href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #900000;">
+                                        {% if forum.fkForumOwnerid.picture is null %}
+                                            <img src="{{asset ('bundles/admin/assets/img/UserMiniImage.png')}}">
+                                        {% else %}
+                                            <img alt="Embedded Image" src="data:image/png;base64,{{ images[forum.fkForumOwnerid.id] }}" height="50" width="50">
+                                        {% endif %}
+
+
+                                        {{ forum.fkForumOwnerid.firstname }} {{ forum.fkForumOwnerid.lastname }}
+
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a>First Name :{{ forum.fkForumOwnerid.firstname }}</a></li>
+                                        <li><a>Last Name :{{ forum.fkForumOwnerid.lastname }}</a></li>
+                                        <li><a>Email :{{ forum.fkForumOwnerid.email }}</a></li>
+                                        <li><a>Points :{{ forum.fkForumOwnerid.points }}</a></li>
+                                        <li><a>Adress :{{ forum.fkForumOwnerid.country }}{{ forum.fkForumOwnerid.town }}</a></li>
+                                    </ul>
+
+                                </h4>
+                            </li>
+
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #024433; font-weight: bold">
+                                    Reported By :
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for u in forum.fkForumReportUserid %}
+                                        <li><a href="#">{{ u.firstname }} {{ u.lastname }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="decline" id="{{ forum.id }}">
+                                <a href="#" style="color: #024433">
+                                    <i class="pe-7s-close"></i>
+                                    Decline Report
+                                </a>
+                            </li>
+
+                            <li class="deleteforum" id="f{{ forum.id }}">
+                                <a href="#" style="color: #920000">
+                                    <i class="pe-7s-junk"></i>
+                                    Delete Forum
+                                </a>
+                            </li>
+
+                            <li class="deleteowner" id="o{{ forum.id }}">
+                                <a href="#" style="color: #920000">
+                                    <i class="pe-7s-junk"></i>
+                                    Delete Owner ?
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="category" style="font-size: 20px">{{ forum.subject  }}</p>
+                    <br>
+                    <p style="color: #bcbcbc">this discussion has been reported <b style="color: red">{{ forum.fkForumReportUserid|length }}</b>   times</p>
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".decline").click(
+                function () {
+                    var id =$(this).attr("id");
+                    $.ajax({
+                        url: "declinereportforum/" + id,
+                        success :function (result) {
+                            $("#content").html(result);
+                        }
+                    })
+                }
+        );
+        $(".deleteforum").click(
+                function () {
+                    var id =$(this).attr("id");
+                    id=id.substr(1,id.length);
+                    $.ajax({
+                        url: "deleteforum/" + id,
+                        success :function (result) {
+                            $("#content").html(result);
+                        }
+                    })
+                }
+        );
+        $(".deleteowner").click(
+                function () {
+                    var id =$(this).attr("id");
+                    id=id.substr(1,id.length);
+                    $.ajax({
+                        url: "deleteforumowner/" + id,
+                        success :function (result) {
+                            $("#content").html(result);
+                        }
+                    })
+                }
+        );
+    });
+</script>

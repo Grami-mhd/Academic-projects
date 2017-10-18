@@ -1,0 +1,15 @@
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $.notify({
+            icon: 'pe-7s-gift',
+            message: "{{ u.firstname }} {{ u.lastname }} <b>is not an Admin anymore</b> "
+
+        },{
+            type: 'warning',
+            timer: 4000
+        });
+
+    });
+</script>

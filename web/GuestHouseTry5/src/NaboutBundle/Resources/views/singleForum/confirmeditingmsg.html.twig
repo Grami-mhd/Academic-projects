@@ -1,0 +1,87 @@
+<div id="cont">
+    <ul>
+        {% for m in messages %}
+            {% if m in mymessages %}
+                <li>
+                    <img src="/guesthousetry5/web/bundles/nabout/img/user-avatar.jpg" alt="Image">
+
+                    <span class="comment-name"><a href="#" style="color: #aaabe7">{{ m.fkMessageOwnerid.firstname }} {{ m.fkMessageOwnerid.lastname }}</a></span>
+
+                    <span style="padding-left: 10px"><i class="icon-edit"></i> <a class="editmsg" id="e{{ m.id }}">Edit</a>    <i class="icon-remove-sign" style="color: red"></i> <a  class="deletemsg" id="d{{ m.id }}" style="color: red">Delete</a></span>
+                    <span class="comment-date"></span>
+                    <div class="comment-content"><textarea id="msg{{ m.id }}" name="msg" class="span10"  >{{ m.text }}</textarea></div>
+
+                </li>
+            {% else %}
+                <li>
+                    <img src="/guesthousetry5/web/bundles/nabout/img/user-avatar.jpg" alt="Image">
+
+                    <span class="comment-name"><a href="#" style="color: #AAABE7">{{ m.fkMessageOwnerid.firstname }} {{ m.fkMessageOwnerid.lastname }}</a></span>
+                    <span style="padding-left: 420px"><i class="icon-eject"></i> <a  style="color: red " >Report</a></span>
+                    <span class="comment-date"> </span>
+                    <div class="comment-content">{{ m.text }}</div>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+
+    </ul>
+</div>
+
+
+<script>
+    $(document).ready(
+            function () {
+
+                $("#subj").attr("disabled",true);
+                $(".span10").attr("disabled",true);
+
+
+                var j=0;
+                $(".editmsg").click(
+                        function () {
+                            var id=$(this).attr("id");
+                            id = id.substr(1,id.length);
+                            if (j == 0){
+                                $(".span10").attr("disabled", false);
+                                j = 1;
+                            }else
+                            {
+                                var txt = $("#msg"+id).val();
+                                $.ajax({
+                                    url: "../editmsg/"+ id +"/" + txt,
+                                    success: function (result) {
+                                        $("#notification").html(result);
+                                    }
+                                })
+                                j=0;
+
+                            }}
+
+                );
+
+                $(".deletemsg").click(
+                        function(){
+                            var id=$(this).attr("id");
+                            id = id.substr(1,id.length);
+                            $.ajax({
+                                url: "../deletemsg/"+id,
+                                success :function (result) {
+                                    $("#deletenotif").html(result)
+                                }
+                            })
+                        }
+                );
+
+
+            }
+    );
+
+
+
+</script>
+
+<script>
+    alert("Your message has been updated with success");
+    $("#mymsg").attr("disabled",true);
+</script>

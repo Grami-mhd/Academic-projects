@@ -1,0 +1,87 @@
+admin_homepage:
+    path:     /Admin_home
+    defaults: { _controller: AdminBundle:Default:index }
+admin_userspage:
+    path:     /Admin_users
+    defaults: { _controller: AdminBundle:Default:users }
+admin_profile:
+    path:     /Admin_profile
+    defaults: { _controller: AdminBundle:Default:profile }
+admin_map:
+    path:     /Admin_map
+    defaults: { _controller: AdminBundle:Default:map }
+admin_demends:
+    path:     /Admin_demends
+    defaults: { _controller: AdminBundle:Default:demends }
+admin_rforums:
+    path:     /Admin_rforums
+    defaults: { _controller: AdminBundle:Default:rforums }
+admin_rmessages:
+    path:     /Admin_rmessages/{id}
+    defaults: { _controller: AdminBundle:Default:rmessages }
+admin_rcomments:
+    path:     /Admin_rcomments
+    defaults: { _controller: AdminBundle:Default:rcomments }
+admin_home:
+    path:     /home
+    defaults: { _controller: AdminBundle:Default:home }
+admin_claims:
+    path:     /Admin_claims
+    defaults: { _controller: AdminBundle:Default:claims }
+admin_search:
+    path:     /Admin_userssearch/{key}
+    defaults: { _controller: AdminBundle:Users:search }
+admin_toadmin:
+    path:     /toadmin/{id}
+    defaults: { _controller: AdminBundle:Users:toadmin }
+admin_unadmin:
+    path:     /unadmin/{id}
+    defaults: { _controller: AdminBundle:Users:unadmin }
+admin_acceptforum:
+    path:     /acceptforum/{id}
+    defaults: { _controller: AdminBundle:demends:accept }
+admin_declineforum:
+    path:     /declineforum/{id}
+    defaults: { _controller: AdminBundle:demends:decline }
+admin_declineall:
+    path:     /declineall
+    defaults: { _controller: AdminBundle:demends:declineall }
+admin_acceptall:
+    path:     /acceptall
+    defaults: { _controller: AdminBundle:demends:acceptall }
+admin_declinereportforum:
+    path:     /declinereportforum/{id}
+    defaults: { _controller: AdminBundle:rforum:declinereportforum }
+admin_deleteforum:
+    path:     /deleteforum/{id}
+    defaults: { _controller: AdminBundle:rforum:deleteforum }
+admin_deleteforumowner:
+    path:     /deleteforumowner/{id}
+    defaults: { _controller: AdminBundle:rforum:deleteforumowner }
+admin_declinemsgreport:
+    path:     /declinemsgreport/{i}/{id}
+    defaults: { _controller: AdminBundle:msgreport:declinemsgreport }
+admin_deletemsg:
+    path:     /deletemsg/{i}/{id}
+    defaults: { _controller: AdminBundle:msgreport:deletemsg }
+admin_banuser:
+    path:     /banuser/{i}/{id}
+    defaults: { _controller: AdminBundle:msgreport:banuser }
+admin_notifyuser:
+    path:     /notifyuser/{i}/{id}
+    defaults: { _controller: AdminBundle:msgreport:notifyuser }
+admin_deletemsgowner:
+    path:     /deletemsgowner/{i}/{id}
+    defaults: { _controller: AdminBundle:msgreport:deletemsgowner }
+admin_deletecommentowner:
+    path:     /deletecommentowner/{id}
+    defaults: { _controller: AdminBundle:commentreport:deletecommentowner }
+admin_deletecommentadmin:
+    path:     /deletecommentadmin/{id}
+    defaults: { _controller: AdminBundle:commentreport:deletecommentadmin}
+admin_declinecommentreport:
+    path:     /declinecommentreport/{id}
+    defaults: { _controller: AdminBundle:commentreport:declinecommentreport }
+admin_stats:
+    path:     /stats/{id}
+    defaults: { _controller: AdminBundle:Default:stats }

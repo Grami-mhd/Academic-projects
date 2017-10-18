@@ -1,0 +1,136 @@
+<div id="ctr" class="container"><br>
+    <h4 class="m_3">Forum View</h4>
+    <div class="container main-container">
+
+
+
+
+        <!-- Blog Content-->
+
+        <div class="row"><!--Container row-->
+
+            <!-- Blog Full Post
+            ================================================== -->
+            <div class="span8 blog">
+
+                <!-- Blog Post 1 -->
+                <article>
+                    <h3 class="title-bg"><textarea id="subj" name="sujet" class="col-md-12" style="font-family:Algerian;color: #1c1cee;text-align: center"  >{{ f.subject }}</textarea></h3>
+                    <div class="post-content">
+
+
+
+
+                        <div class="post-summary-footer">
+                            <ul class="post-data">
+
+                                <li><i class="icon-user"></i> {{ f.fkForumOwnerid.firstname }} {{ f.fkForumOwnerid.lastname }}</li>
+                                <li><i class="icon-comment"></i> {{ nbr }} Comments</li>
+                                <li id="e{{ f.id }}" class="edit"><i class="icon-edit"></i> <a href="#">Edit</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- About the Author -->
+
+
+                <!-- Post Comments
+                ================================================== -->
+                <section class="comments">
+                    <h4 class="title-bg"><a name="comments"></a>{{ nbr }} Comments so far</h4>
+                    <ul>
+                        {% for m in messages %}
+                            {% if m in mymessages %}
+                                <li>
+                                    <img src="/guesthousetry5/web/bundles/nabout/img/user-avatar.jpg" alt="Image">
+
+                                    <span class="comment-name"><a href="" style="color: #aaabe7">{{ m.fkMessageOwnerid.firstname }} {{ m.fkMessageOwnerid.lastname }}</a></span>
+
+                                    <span style="padding-left: 10px"><i class="icon-edit"></i> <a href="">Edit</a>    <i class="icon-remove-sign" style="color: red"></i> <a href="" style="color: red">Delete</a></span>
+                                    <span class="comment-date"></span>
+                                    <div class="comment-content">{{ m.text }}</div>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <img src="/guesthousetry5/web/bundles/nabout/img/user-avatar.jpg" alt="Image">
+
+                                    <span class="comment-name"><a href="" style="color: #AAABE7">{{ m.fkMessageOwnerid.firstname }} {{ m.fkMessageOwnerid.lastname }}</a></span>
+                                    <span style="padding-left: 420px"><i class="icon-eject"></i> <a href="" style="color: red " >Report</a></span>
+                                    <span class="comment-date"> </span>
+                                    <div class="comment-content">{{ m.text }}</div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </ul>
+
+                    <!-- Comment Form -->
+                    <div class="comment-form-container">
+                        <h6>Leave a Comment</h6>
+                        <form method="POST"  id="comment-form" name="postComment">
+
+                            <textarea class="span6" name="comment"></textarea>
+                            <div class="row">
+                                <div class="span2">
+                                    <input type="submit" class="btn btn-inverse" value="Post My Comment" name="postComment">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section><!-- Close comments section-->
+
+            </div><!--Close container row-->
+
+            <!-- Blog Sidebar
+            ================================================== -->
+            <div class="span4 sidebar">
+
+                <!--Search-->
+
+
+                <!--Categories-->
+
+
+                <!--Popular Posts-->
+                {#
+
+                <h5 class="title-bg">Popular Forums</h5>
+                {% for f in allforums %}
+                    <ul class="popular-posts">
+
+                        <li>
+                            <a href="blog-single.htm"><img src="{{asset ('bundles/nabout/img/gallery/gallery-img-2-thumb.jpg')}}" alt="Popular Post"></a>
+                            <h6>{{ f.subject }} </h6>
+                            <em>{{ f.fkForumOwnerid.firstname }} {{ f.fkForumOwnerid.lastname }} | {{ nbr }} Comments</em>
+                        </li>
+                    </ul>
+                {% endfor %}
+
+                #}
+
+                <!--Tabbed Content-->
+
+
+
+
+                <!--Video Widget-->
+
+            </div>
+
+        </div>
+
+    </div> <!-- End Container -->
+
+    <!-- Footer Area
+        ================================================== -->
+
+
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
+
+
+</div>

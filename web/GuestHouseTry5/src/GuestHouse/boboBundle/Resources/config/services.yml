@@ -1,0 +1,4 @@
+services:
+#    guest_housebobo.example:
+#        class: GuestHouse\boboBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

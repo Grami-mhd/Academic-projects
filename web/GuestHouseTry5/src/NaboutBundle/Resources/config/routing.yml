@@ -1,0 +1,28 @@
+nabout_home:
+    path:     /forums
+    defaults: { _controller: NaboutBundle:Forums:forums }
+
+nabout_hom:
+    path:     /singleforum/{id}
+    defaults: { _controller: NaboutBundle:singleForum:singleForum }
+nabout_researchforums:
+    path:     /researchforums/{key}
+    defaults: { _controller: NaboutBundle:Forums:researchforums }
+nabout_viewforums:
+    path:     /viewforums
+    defaults: { _controller: NaboutBundle:Forums:forums}
+nabout_deleteforum:
+    path:     /deleteforum/{id}
+    defaults: { _controller: NaboutBundle:deleteforum:deleteforum}
+nabout_editforum:
+    path:     /editforum/{id}/{txt}
+    defaults: { _controller: NaboutBundle:singleForum:editForum}
+nabout_editmsg:
+    path:     /editmsg/{id}/{txt}
+    defaults: { _controller: NaboutBundle:singleForum:editmsg}
+nabout_deletemsg:
+    path:     /deletemsg/{id}
+    defaults: { _controller: NaboutBundle:singleForum:deletemsg}
+nabout_reportmsg:
+    path:     /reportmsg/{id}
+    defaults: { _controller: NaboutBundle:singleForum:reportmsg}

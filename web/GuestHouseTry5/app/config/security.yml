@@ -1,0 +1,44 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_USER:  ROLE_USER
+        ROLE_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/viewadd, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/Admin_home, role: ROLE_ADMIN }
+        - { path: ^/Admin_users, role: ROLE_ADMIN }
+        - { path: ^/Admin_claims, role: ROLE_ADMIN }
+        - { path: ^/Admin_rforums, role: ROLE_ADMIN }
+        - { path: ^/Admin_rmessages, role: ROLE_ADMIN }
+        - { path: ^/Admin_rcomments, role: ROLE_ADMIN }
+        - { path: ^/Admin_profile, role: ROLE_ADMIN }
+        - { path: ^/Admin_demends, role: ROLE_ADMIN }
+        - { path: ^/Admin_map, role: ROLE_ADMIN }
+        - { path: ^/profile, role: ROLE_USER }
+        - { path: ^/house, role: ROLE_USER }
+        - { path: ^/Claim, role: ROLE_USER }
+        - { path: ^/stays, role: ROLE_USER }
+        - { path: ^/hosting, role: ROLE_USER }
+        - { path: ^/viewforums, role: ROLE_USER }
+        - { path: ^/addowner, role: ROLE_USER }

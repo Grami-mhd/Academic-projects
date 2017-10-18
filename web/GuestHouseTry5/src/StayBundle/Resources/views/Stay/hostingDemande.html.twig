@@ -1,0 +1,179 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Realist an Real_Estate Category Flat Bootstarp Resposive Website Template | About :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Realist Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="{{asset ('bundles/stay/assets/css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{asset ('bundles/stay/assets/js/jquery-1.11.1.min.js')}}"></script>
+    <!-- Custom Theme files -->
+    <link href="{{asset ('bundles/stay/assets/css/style.css')}}" rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet:100,300,400,500,600,700,800,900' type='text/css'>
+    <!-- Menu -->
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="{{asset ('bundles/stay/assets/fonts/css/font-awesome.min.css')}}">
+    <!----font-Awesome----->
+    <script type="text/javascript" src="{{asset ('bundles/stay/assets/js/jquery.fancybox.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset ('bundles/stay/assets/css/jquery.fancybox.css')}}" media="screen" />
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.fancybox').fancybox();
+        });
+    </script>
+</head>
+
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="{{asset ('bundles/sou/assets/img/favicon.ico')}}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>Light Bootstrap Dashboard by Creative Tim</title>
+
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
+
+<!-- Bootstrap core CSS     -->
+<link href="{{asset ('bundles/sou/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+
+<!-- Animation library for notifications   -->
+<link href="{{asset ('bundles/sou/assets/css/animate.min.css')}}" rel="stylesheet"/>
+
+<!--  Light Bootstrap Table core CSS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    -->
+<link href="{{asset ('bundles/sou/assets/css/light-bootstrap-dashboard.css')}}" rel="stylesheet"/>
+
+
+<!--  CSS for Demo Purpose, don't include it in your project     -->
+<link href="{{asset ('bundles/sou/assets/css/demo.css')}}" rel="stylesheet" />
+
+
+<!--     Fonts and icons     -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<link href="{{asset ('bundles/sou/assets/css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
+
+<body>
+<div class="header">
+    <div class="col-xs-4">
+        <div class="logo">
+            <a href="index.html"><img src="{{asset ('bundles/stay/assets/images/guesthouse.png')}}" alt=""/></a>
+        </div>
+    </div>
+    <div class="col-xs-8 header_right">
+        <span class="menu"></span>
+        <div class="top-menu">
+            <ul>
+                <li><a href="home_u"><i class="fa fa-home"> </i>Home</a></li>
+                <li><a href="profile"><i class="fa fa-star"> </i> Profile</a></li>
+                <li><a href="stays"><i class="fa fa-thumbs-up"> </i>Satys</a></li>
+                <li><a class="active scroll" href="hosting"><i class="fa fa-picture-o"> </i>Hosting</a></li>
+                <li><a href="finish"><i class="fa fa-picture-o"> </i>Finish</a></li>
+                <li><a href="contact.html"><i class="fa fa-envelope-o"> </i>Contact</a></li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        <!-- script for menu -->
+        <script>
+            $( "span.menu" ).click(function() {
+                $( ".top-menu" ).slideToggle( "slow", function() {
+                    // Animation complete.
+                });
+            });
+        </script>
+        <!-- script for menu -->
+    </div>
+    <div class="clearfix"> </div>
+</div>
+
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <div class="col-md-8">
+            {% for h in houses %}
+                <div class="service_grid">
+                    <p>{{ h.fkSenderid.firstname }},{{ h.fkSenderid.lastname }} want to rent your house</p>
+                    <input type="button" value="Accept">
+                    <input type="button" value="Decline">
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="col-md-4">
+
+<!-- user profile-->
+            <div class="card card-user">
+                <div class="image">
+                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <a href="#">
+                            <img class="avatar border-gray" src="{{asset ('bundles/sou/assets/img/faces/face-3.jpg')}}" alt="..."/>
+
+                            <h4 class="title">{{ user.username }}<br />
+                                <small>{{ user.firstname }} {{ user.lastname }}</small><br/>
+                                <small>{{ user.country }}, {{ user.town }}</small><br/>
+                                <small>Phone: {{ user.phone }}</small><br/>
+                                <small>Points: {{ user.points }}</small><br/>
+                            </h4>
+                        </a>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="text-center">
+                    <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                    <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                    <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+                </div>
+                <br>
+            </div>
+
+        </div>
+
+
+    </div>
+        <br><hr>
+        <div class="copy">
+            <p>© 2017 All Rights Reseverd Template by <a href="">Guest House</a> </p>
+        </div>
+</div>
+    </div>
+</body>
+
+
+<script>
+
+    $(document).ready(
+            function(){
+                {% for h in houses %}
+
+                $("#b{{ h.id }}").click(
+                        function () {
+                            $.ajax({
+                                url:"finish/{{ h.fkHostingHouseid.id }}",
+                                success:function (result) {
+                                    $("#elliji").html(result);
+                                }
+                            })
+                        });
+
+                {% endfor %}
+
+            }
+    );
+</script>
+
+</html>

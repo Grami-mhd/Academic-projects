@@ -1,0 +1,38 @@
+
+
+guest_housebobo_test:
+    path:     /m
+    defaults: { _controller: GuestHouseboboBundle:bobo:affichage }
+
+guest_housebobo_test1:
+    path:     /addowner/{ide}
+    defaults: { _controller: GuestHouseboboBundle:bobo:Ajout }
+
+guest_housebobo_test2:
+    path:     /ajoutdate/{ide}
+    defaults: { _controller: GuestHouseboboBundle:bobo:ajout }
+
+guest_housebobo_test3:
+    path:     /viewadd/{ide}
+    defaults: { _controller: GuestHouseboboBundle:bobo:affichagetest }
+
+guest_housebobo_test4:
+    path:     /modify/{ide}
+    defaults: { _controller: GuestHouseboboBundle:bobo:update }
+
+
+guest_housebobo_home:
+    path:     /home
+    defaults: { _controller: GuestHouseboboBundle:home:index }
+
+guest_housebobo_home1:
+    path:     /research/{key}
+    defaults: { _controller: GuestHouseboboBundle:home:researchDate }
+
+guest_housebobo_home2:
+    path:     /research1/{key}
+    defaults: { _controller: GuestHouseboboBundle:home:researchTown }
+
+guest_housebobo_home3:
+    path:     /research2/{key1}
+    defaults: { _controller: GuestHouseboboBundle:home:researchPrice }

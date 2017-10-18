@@ -1,0 +1,15 @@
+sou_profile:
+    path:     /profile
+    defaults: { _controller: SouBundle:Profile:update }
+sou_house:
+    path:     /house
+    defaults: { _controller: SouBundle:House:index }
+sou_house_Ajout:
+    path:     /ajouthouse
+    defaults: { _controller: SouBundle:House:Ajout }
+sou_homepage_claim:
+    path:     /Claim
+    defaults: { _controller: SouBundle:Claim:index }
+sou:
+    path:     /map
+    defaults: { _controller: SouBundle:Map:index }

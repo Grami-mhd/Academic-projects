@@ -1,0 +1,209 @@
+
+{% extends "GuestHouseBundle::mother1.html.twig" %}
+
+
+{% block cont %}
+
+
+
+<!-- ######### CSS STYLES ######### -->
+
+<link rel="stylesheet" href="{{asset ('bundles/nabout/css/bootstrap.css')}}">
+<link rel="stylesheet" href="{{asset ('bundles/nabout/css/bootstrap-responsive.css')}}">
+<link rel="stylesheet" href="{{asset ('bundles/nabout/css/custom-styles.css')}}" />
+
+<link rel="stylesheet" href="{{asset ('bundles/nabout/css_home/reset.css')}}" type="text/css" />
+
+<div class="content_top">
+    <div id="ctr" class="container"><br>
+        <h4 class="m_3">Forum View</h4>
+
+        <div class="container main-container">
+
+
+
+
+            <!-- Blog Content-->
+
+            <!--Container row-->
+
+            <!-- Blog Full Post
+            ================================================== -->
+            <div class="span12 blog">
+
+                <!-- Blog Post 1 -->
+                <article>
+                    <div id="554">
+                        <h3 class="title-bg"><a href="#">{{ forum.subject }}</a></h3>
+                    </div>
+                    <div class="post-content">
+
+
+
+
+                        <div class="post-summary-footer">
+                            <ul class="post-data">
+
+                                <li><i class="icon-user"></i> {{ forum.fkForumOwnerid.firstname }} {{ forum.fkForumOwnerid.lastname }}</li>
+                                <li><i class="icon-comment"></i> {{ nbr }} Comments</li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- About the Author -->
+
+
+                <!-- Post Comments
+                ================================================== -->
+                <section class="comments">
+                    <h4 class="title-bg"><a name="comments"></a>{{ nbr }} Comments so far</h4>
+                    <div id="cont">
+                        <ul>
+                            {% for m in messages %}
+                                {% if m in mymessages %}
+                                    <li>
+                                        <img src="/guesthousetry5/web/bundles/nabout/img/user-avatar.jpg" alt="Image">
+
+                                        <span class="comment-name"><a href="#" style="color: #aaabe7">{{ m.fkMessageOwnerid.firstname }} {{ m.fkMessageOwnerid.lastname }}</a></span>
+
+                                        <span style="padding-left: 10px"><i class="icon-edit"></i> <a class="editmsg" id="e{{ m.id }}">Edit</a>    <i class="icon-remove-sign" style="color: red"></i> <a  class="deletemsg" id="d{{ m.id }}" style="color: red">Delete</a></span>
+                                        <span class="comment-date"></span>
+                                        <div class="comment-content"><textarea id="msg{{ m.id }}" name="msg" class="span10"  >{{ m.text }}</textarea></div>
+
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <img src="/guesthousetry5/web/bundles/nabout/img/user-avatar.jpg" alt="Image">
+
+                                        <span class="comment-name"><a href="#" style="color: #AAABE7">{{ m.fkMessageOwnerid.firstname }} {{ m.fkMessageOwnerid.lastname }}</a></span>
+                                        <span style="padding-left: 10px"><i class="icon-eject"></i> <a class="reportmsg" id="r{{ m.id }}" style="color: red " >Report</a></span>
+                                        <span class="comment-date"> </span>
+                                        <div class="comment-content">{{ m.text }}</div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+
+                        </ul>
+                    </div>
+
+                    <!-- Comment Form -->
+                    <div class="comment-form-container">
+                        <h6>Leave a Comment</h6>
+                        <form method="POST"  id="comment-form" name="postComment">
+
+                            <textarea class="span6" name="comment" required ></textarea>
+                            <div class="row">
+                                <div class="span2">
+                                    <input type="submit" class="btn btn-inverse" value="Post My Comment" name="postComment">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section><!-- Close comments section-->
+
+            </div><!--Close container row-->
+
+            <!-- Blog Sidebar
+            ================================================== -->
+
+
+
+
+        </div> <!-- End Container -->
+
+        <!-- Footer Area
+            ================================================== -->
+
+
+        <!-- Scroll to Top -->
+        <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
+
+
+    </div>
+</div>
+</body>
+
+<script>
+    $(document).ready(
+            function () {
+
+
+                $(".span10").attr("disabled",true);
+
+
+                var j=0;
+                $(".editmsg").click(
+                        function () {
+                            var id=$(this).attr("id");
+                            id = id.substr(1,id.length);
+                            if (j == 0){
+                                $(".span10").attr("disabled", false);
+                                j = 1;
+                            }else
+                            {
+                                var txt = $("#msg"+id).val();
+                                $.ajax({
+                                    url: "../editmsg/"+ id +"/" + txt,
+                                    success: function (result) {
+                                        $("#cont").html(result);
+                                    }
+                                })
+                                j=0;
+
+                            }}
+
+                );
+
+                $(".deletemsg").click(
+                        function(){
+                            var id=$(this).attr("id");
+                            id = id.substr(1,id.length);
+                            $.ajax({
+                                url: "../deletemsg/"+id,
+                                success :function (result) {
+                                    $("#cont").html(result)
+                                }
+                            })
+                        }
+                );
+
+                $(".reportmsg").click(
+                        function(){
+
+                            var id=$(this).attr("id");
+                            id = id.substr(1,id.length);
+                            $.ajax({
+                                url: "../reportmsg/"+id,
+                                success :function (result) {
+                                    $("#cont").html(result)
+                                }
+                            })
+                        }
+                );
+
+
+
+            }
+    );
+
+
+
+</script>
+<script id="notif" ></script>
+
+
+    <script>
+
+        $(document).ready(
+                function () {
+                    $("#forums_u").attr("class","active scroll");
+
+                }
+        );
+    </script>
+{% endblock %}

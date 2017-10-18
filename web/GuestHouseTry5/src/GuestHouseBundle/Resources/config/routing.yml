@@ -1,0 +1,31 @@
+guest_house_homepage:
+    path:     /
+    defaults: { _controller: GuestHouseBundle:Default:index }
+
+guest_house_home:
+    path:     /home_u
+    defaults: { _controller: GuestHouseBundle:home:index }
+
+guest_house_home1:
+    path:     /research/{key}
+    defaults: { _controller: GuestHouseBundle:home:researchDate }
+
+guest_house_home2:
+    path:     /research1/{key}
+    defaults: { _controller: GuestHouseBundle:home:researchTown }
+
+guest_house_home3:
+    path:     /research2/{key1}
+    defaults: { _controller: GuestHouseBundle:home:researchPrice }
+guest_house_home4:
+    path:     /researchair/{key2}
+    defaults: { _controller: GuestHouseBundle:home:researchAir}
+guest_house_home5:
+    path:     /researchfire/{key3}
+    defaults: { _controller: GuestHouseBundle:home:researchFire}
+guest_house_home6:
+    path:     /researchwash/{key3}
+    defaults: { _controller: GuestHouseBundle:home:researchWash}
+guest_house_home7:
+    path:     /researchtv/{key3}
+    defaults: { _controller: GuestHouseBundle:home:researchTv}

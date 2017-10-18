@@ -1,0 +1,182 @@
+
+{% extends "GuestHouseBundle::mother1.html.twig" %}
+
+
+{% block cont %}
+
+
+
+<div class="about_top">
+    <div class="container">
+        <div class="standards">
+            <ul class="selectors_wrapper">
+                <li class="selector active" data-selector="1">Picture</li>
+                <li class="selector " data-selector="2">Location</li>
+                <!-- <li class="selector" data-selector="3">Video</li> -->
+            </ul>
+            <div class="standard_content" style="height: 439px;">
+                <div class="standard active" data-selector="1">
+                    <ul class="single_grid">
+                        {% for hous, houses in houses %}
+                            <li><img alt="Embedded Image" src="data:image/png;base64,{{ pictures[add.getId()] }}" class="img-responsive" /></li>
+
+                            <li><img src="data:image/png;base64,{{ pictures1[add.getId()] }}" class="img-responsive" alt="Embedded Image"/></li>
+                        {% endfor %}
+                        <!--<li><img src="images/s4.jpg" class="img-responsive" alt=""/></li>
+                            <li><img src="images/s5.jpg" class="img-responsive" alt=""/></li>
+                            <li><img src="images/s6.jpg" class="img-responsive" alt=""/></li>
+                            <li><img src="images/s7.jpg" class="img-responsive" alt=""/></li>
+                            <li><img src="images/s8.jpg" class="img-responsive" alt=""/></li>
+                            <li><img src="images/s9.jpg" class="img-responsive" alt=""/></li> -->
+                        <div class="clearfix"> </div>
+                    </ul>
+                </div>
+                <div class="standard" data-selector="2">
+                    <div class="map1">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3150859.767904157!2d-96.62081048651531!3d39.536794757966845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1408111832978"> </iframe>
+                    </div>
+                </div>
+                <!--		<div class="standard video" data-selector="3">
+                           <iframe width="100%" height="350" src="https://www.youtube.com/embed/lSXGxOiRp7A" frameborder="0" allowfullscreen></iframe>
+                        </div> -->
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-9 single_box1">
+            <ul class="single_box">
+                 <li><i class="fa fa-building-o icon1"> </i> 2 Bedrooms</li>
+                 <li><i class="fa fa-retweet icon1"> </i> 1 Bathroom</li>
+                 <li><i class="fa fa-plane icon1"> </i> 1 Garage</li>
+
+            </ul>
+
+        <form method="POST">
+
+            <i>Type of the house :</i> <input type="text" name="nature"  >
+
+            <i style="margin-left:4em"> Price :</i> <input type="text" name="prix"  >
+            {#<p>In my house I have four rooms, one living room, one kitchen, one bathroom and one hall.
+                 My room is next to the living room, in my room I have a desk near the window, I have two beds, I have my computer on the desk, my closet is next to the desk and in the desk I have books. In my room I have pictures of anime.
+                 The room of my sister is next to my room. My sister has a desk under the window, she has a library next to the desk, her bed is far from the window and her closet is next to the bed.
+                 The room of my parents is next to my sister’s room. My parents have in their room a big bed, they have two little tables, their closet is behind the windows.</p>#}
+            <p class="single_desc"> <label>Description :</label> <br> <textarea name="text" rows="10" cols="100" > </textarea> </p>
+
+            <input type="submit" value="modify" class="btn btn-default btn-sm" > <br>
+
+
+        </form>
+        </div>
+        <div class="col-md-3">
+            <div class="blog_list2">
+                <h3>The owner</h3>
+                <ul class="blog-list3 list_1">
+                    <li class="blog-list3-img"><img src="{{asset ('bundles/guesthousebobo/assets/images/pic12.jpg' )}}" class="img-responsive" alt=""></li>
+                    <li class="blog-list3-desc">
+                        <h4><a href="#">{{ add.fkUser }}</a></h4>
+                        <ul class="admin_desc">
+                            <li class="list_top"><i class="fa fa-phone-square ph"> </i>
+                                <p class="m_2">{{ add.fkUser.phone }}</p></li>
+                            <div class="clearfix"> </div>
+                            <li class="list_top"><i class="fa fa-envelope ph"> </i>
+                                <p class="m_2"><a href="malito:mail@demolink.org">{{ add.fkUser.email }}</a></p></li>
+                            <div class="clearfix"> </div>
+                        </ul>
+                    </li>
+                    <div class="clearfix"> </div>
+                </ul>
+                <!--<ul class="blog-list3 list_1">
+                    <li class="blog-list3-img"><img src="images/pic13.jpg" class="img-responsive" alt=""></li>
+                    <li class="blog-list3-desc">
+                      <h4><a href="#">Incididunt</a></h4>
+                        <ul class="admin_desc">
+                           <li class="list_top"><i class="fa fa-phone-square ph"> </i>
+                           <p class="m_2">20-1257-2587</p></li>
+                           <div class="clearfix"> </div>
+                           <li class="list_top"><i class="fa fa-envelope ph"> </i>
+                           <p class="m_2"><a href="malito:mail@demolink.org">mail(at)realist.com</a></p></li>
+                           <div class="clearfix"> </div>
+                       </ul>
+                    </li>
+                    <div class="clearfix"> </div>
+                </ul>
+                <ul class="blog-list3">
+                    <li class="blog-list3-img"><img src="images/pic7.jpg" class="img-responsive" alt=""></li>
+                    <li class="blog-list3-desc">
+                      <h4><a href="#">Hampden-Sydney</a></h4>
+                        <ul class="admin_desc">
+                           <li class="list_top"><i class="fa fa-phone-square ph"> </i>
+                           <p class="m_2">20-1257-2587</p></li>
+                           <div class="clearfix"> </div>
+                           <li class="list_top"><i class="fa fa-envelope ph"> </i>
+                           <p class="m_2"><a href="malito:mail@demolink.org">mail(at)realist.com</a></p></li>
+                           <div class="clearfix"> </div>
+                       </ul>
+                    </li>
+                    <div class="clearfix"> </div>
+                </ul> -->
+            </div>
+        </div>
+        {#<div class="clearfix"> </div>
+        <div class="about_grid1">
+            <h3>Comments About the Add</h3>
+            <div class="list styled custom-list">
+
+                <ul>
+
+                    <li>
+                        <div class="about_desc">
+                            {% for c in comment %}
+                                <h5><a href="#">{{ c.fkCommentOwnerid }}</a></h5>
+                                <p> {{ c.comment }} </p>
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <center>
+                <div class="navigation">
+                    {{ knp_pagination_render(comment) }}
+                </div>
+            </center>#}
+
+            {# <div class="col-md-4">
+                <div class="list styled custom-list">
+                    <ul>
+                        <li><span class="dropcap">02 / </span>
+                            <div class="about_desc">
+                                <h5><a href="#">I will never come back here</a></h5>
+                                <p> {{ c.comment }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="list styled custom-list">
+                    <ul>
+                        <li><span class="dropcap">03 / </span>
+                            <div class="about_desc">
+                                <h5><a href="#">The best of the best </a></h5>
+                                <p>I recommend this house for everyone who will be staying in this town . the house is cool and the owner is a kind men. </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>#}
+            <div class="clearfix"> </div>
+        </div>
+
+
+
+
+{# ************************************************************************************************************ #}
+
+</div>
+    <script>
+        $(document).ready(
+                function () {
+                    $("#home_u").attr("class","active scroll");
+                }
+        );
+    </script>
+{% endblock %}

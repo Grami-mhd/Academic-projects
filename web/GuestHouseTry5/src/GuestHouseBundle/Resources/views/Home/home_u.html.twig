@@ -1,0 +1,420 @@
+
+{% extends "GuestHouseBundle::mother.html.twig" %}
+
+
+{% block cont %}
+    <div class="slider">
+        <div class="callbacks_container">
+            <ul class="rslides" id="slider">
+                <li><img src="{{asset ('bundles/guesthouse/assets/images/banner.jpg')}}" class="img-responsive" alt=""/>
+                    <div class="banner_desc">
+                        <div class="container">
+                            <h1>welcome to the registered user area of our site.</h1>
+                            <h2>GuestHouse</h2>
+                        </div>
+                        <div class="details">
+                            <div class="container" style="padding-left:250px ">
+                                <div class="col-xs-8 dropdown-buttons">
+                                    <div class="col-xs-6 dropdown-button">
+                                        <div class="section_room">
+                                            <select id="town"  class="form-control">
+                                                <option value="null">All Locations</option>
+                                                <option value="Ariana">Ariana</option>
+                                                <option value="Béja">Béja</option>
+                                                <option value="Ben Arous">Ben Arous</option>
+                                                <option value="Bizerte">Bizerte</option>
+                                                <option value="Gabès">Gabès</option>
+                                                <option value="Gafsa">Gafsa</option>
+                                                <option value="Jendouba">Jendouba</option>
+                                                <option value="Kairouan">Kairouan</option>
+                                                <option value="Kasserine">Kasserine</option>
+                                                <option value="Kébili">Kébili</option>
+                                                <option value="Le Kef">Le Kef</option>
+                                                <option value="Mahdia">Mahdia</option>
+                                                <option value="La Manouba">La Manouba</option>
+                                                <option value="Médenine">Médenine</option>
+                                                <option value="Monastir">Monastir</option>
+                                                <option value="Nabeul">Nabeul</option>
+                                                <option value="Sfax">Sfax</option>
+                                                <option value="Sidi Bouzid">Sidi Bouzid</option>
+                                                <option value="Siliana">Siliana</option>
+                                                <option value="Sousse">Sousse</option>
+                                                <option value="Tataouine">Tataouine</option>
+                                                <option value="Tozeur">Tozeur</option>
+                                                <option value="Tunis">Tunis</option>
+                                                <option value="Zaghouan">Zaghouan</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 dropdown-button">
+                                        <div class="section_room">
+                                            <input type="number" id="price" min="0" placeholder="set your max price"  class="form-control">
+                                            </input>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-2 submit_button">
+                                    <form>
+                                        <input id="rech" type="submit" value="All Adds">
+                                    </form>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="content_top">
+        <div class="container">
+            <!--<h4 class="m_3">Most Popular</h4>
+        <div class="grid_1">
+            <div class="col-md-3 box_1">
+                <a href="single.html"><img src="{{asset ('bundles/guesthouse/assets/images/pic8.jpg')}}" class="img-responsive" alt=""/></a>
+                <div class="box_2">
+                    <div class="special-wrap"><div class="hot_offer"><span class="m_11">Hot Offer</span></div><div class="forclosure"><span class="m_12">Special Offer</span></div></div>
+                </div>
+                <div class="box_3">
+                    <h3><a href="single.html">House1</a></h3>
+                    <div class="boxed_mini_details clearfix">
+			      <span class="area first"><strong>Garage</strong><i class="fa fa-plane icon1"> </i>
+			      2</span>
+                        <span class="status"><strong>Baths</strong><i class="fa fa-retweet icon1"> </i>
+			      2</span>
+                        <span class="bedrooms last"><strong>Beds</strong><i class="fa fa-bed"></i>
+			      2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 box_1">
+                <a href="single.html"><img src="{{asset ('bundles/guesthouse/assets/images/pic9.jpg')}}" class="img-responsive" alt=""/></a>
+                <div class="box_2">
+                    <div class="special-wrap"><div class="hot_offer"><span class="m_11">Hot Offer</span></div><div class="forclosure"><span class="m_12">Special Offer</span></div></div>
+                </div>
+                <div class="box_3">
+                    <h3><a href="single.html">House2</a></h3>
+                    <div class="boxed_mini_details clearfix">
+			      <span class="area first"><strong>Garage</strong><i class="fa fa-plane icon1"> </i>
+			      2</span>
+                        <span class="status"><strong>Baths</strong><i class="fa fa-retweet icon1"> </i>
+			      2</span>
+                        <span class="bedrooms last"><strong>Beds</strong><i class="fa fa-building-o icon1"> </i>
+			      2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 box_1">
+                <a href="single.html"><img src="{{asset ('bundles/guesthouse/assets/images/pic10.jpg')}}" class="img-responsive" alt=""/></a>
+                <div class="box_2">
+                    <div class="special-wrap"><div class="hot_offer"><span class="m_11">Hot Offer</span></div><div class="forclosure"><span class="m_12">Special Offer</span></div></div>
+                </div>
+                <div class="box_3">
+                    <h3><a href="single.html">House3</a></h3>
+                    <div class="boxed_mini_details clearfix">
+			      <span class="area first"><strong>Garage</strong><i class="fa fa-plane icon1"> </i>
+			      2</span>
+                        <span class="status"><strong>Baths</strong><i class="fa fa-retweet icon1"> </i>
+			      2</span>
+                        <span class="bedrooms last"><strong>Beds</strong><i class="fa fa-building-o icon1"> </i>
+			      2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 box_1">
+                <a href="single.html"><img src="{{asset ('bundles/guesthouse/assets/images/pic11.jpg')}}" class="img-responsive" alt=""/></a>
+                <div class="box_2">
+                    <div class="special-wrap"><div class="hot_offer"><span class="m_11">Hot Offer</span></div><div class="forclosure"><span class="m_12">Special Offer</span></div></div>
+                </div>
+                <div class="box_3">
+                    <h3><a href="single.html">House4</a></h3>
+                    <div class="boxed_mini_details clearfix">
+			      <span class="area first"><strong>Garage</strong><i class="fa fa-plane icon1"> </i>
+			      2</span>
+                        <span class="status"><strong>Baths</strong><i class="fa fa-retweet icon1"> </i>
+			      2</span>
+                        <span class="bedrooms last"><strong>Beds</strong><i class="fa fa-building-o icon1"> </i>
+			      2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>-->
+            <div class="content_bottom">
+                <div class="col-md-2  grid_5">
+
+                    <div class="widget">
+                        <div class="title"><h3><i class="fa fa-meh-o men"> </i> For Rent</h3></div>
+                        <fieldset>
+                            <div>
+                                <ul class="unstyled centered">
+                                    <li class="control-inline">
+                                        <input id="air" class="styled-checkbox"  type="checkbox" value="airconditioner"><label >airconditioner</label>
+                                    </li>
+                                    <li class="control-inline">
+                                        <input id="fire" class="styled-checkbox"  type="checkbox" value="fireplace" checked><label >fireplace</label>
+                                    </li>
+                                    <li class="control-inline">
+                                        <input id="wash" class="styled-checkbox"  type="checkbox" value="	washingmachine"><label >washingmach</label>
+                                    </li>
+                                    <li class="control-inline">
+                                        <input id="tv" class="styled-checkbox"  type="checkbox" value="tv"><label >tv</label>
+                                    </li>
+                                    {# <li class="control-inline">
+                                         <input id="barb" class="styled-checkbox"  type="checkbox" value="barbecue"><label >barbecue</label>
+                                     </li>
+                                     <li class="control-inline">
+                                         <input class="styled-checkbox"  type="checkbox" value="childrengames"><label >childrengames</label>
+                                     </li>
+                                     <li class="control-inline">
+                                         <input class="styled-checkbox"  type="checkbox" value="outdoorparking"><label >outdoorparking</label>
+                                     </li>
+                                     <li class="control-inline">
+                                         <input class="styled-checkbox"  type="checkbox" value="indoorparking"><label >indoorparking</label>
+                                     </li>#}
+                                </ul>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-7">
+
+                    <!--55555555555555555555555555555555555555555555555555555555555555555555555555555555555555-->
+                    <form>
+                        <div class="col-md-15">
+                            <div {#class="sap_tabs"#}>
+                                <div {#id="horizontalTab" #}{#style="display: block; width: 100%; margin: 0px;"#}>
+                                    <label>Choose a date</label>
+                                    <div {#class="tab_grid"#}>
+                                        <ul {#class="resp-tabs-list"#}>
+                                            <!--<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Apartment</span></li>-->
+
+
+                                            <div class="resp-tab-item">
+                                                <input id="dateInputButton" type="date" name="daterecherche" class="form-control" >
+                                            </div>
+
+
+                                        </ul>
+                                    </div>
+                                    <!--houni il dar-->
+
+                                    <div id="888">
+                                        <table>
+
+                                            <div class="about">
+                                                {% for m in add %}
+                                                    {% if loop.index-1 % 3 ==0 %}
+                                                        <tr class="service_grid">
+                                                        <td class="col-md-3 service_box">
+                                                    {% else %}
+                                                        <td class="col-md-3 service_box">
+                                                    {% endif %}
+                                                    <div>
+                                                        {% if m.picture1 is null %}
+                                                            <img  src="{{asset ('bundles/sou/assets/img/greenhouse.png')}}" alt="..."/>
+                                                        {% else %}
+                                                            <img   alt="Embedded Image" src="data:image/png;base64,{{ picture1[m.id] }}" height="148" width="198">
+                                                            {#<div class="box_type">$&nbsp;{{ m.price }}</div>#}
+                                                        {% endif %}
+
+                                                        <a  href="{{path('guest_housebobo_test3',{'ide':m.id})}}"><h3 style="color: #a1eb3a; font-weight: bold">{{ m.country }} {{ m.town }}</h3></a>
+                                                        <h5 style="color: #000000; font-weight: normal">{{ m.price }}dT</h5>
+                                                        <!--<h5 style="color: #6256eb; font-weight: bold"><a href="single.html">Add date availiability</a></h5>-->
+                                                    </div>
+                                                    </td>
+                                                    {% if loop.index %3 ==0 %}
+                                                        </tr>
+                                                    {% endif %}
+                                                {%  endfor %}
+
+                                                <div class="clearfix"> </div>
+                                                </tr>
+                                            </div>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3" style="padding-left:60px ">
+                    <div class="blog_list2" >
+                        {% if user is not null %}
+                            <h3>My account</h3>
+                            <ul class="blog-list3 list_1">
+                                <li class="blog-list3-img">
+                                    {% if picture is null %}
+                                        <img class="img-responsive" src="{{asset ('bundles/admin/assets/img/UserMiniImage.png')}}" alt="..."/>
+                                    {% else %}
+                                        <img  class="img-responsive" alt="Embedded Image" src="data:image/png;base64,{{ picture }}" >
+                                    {% endif %}</li>
+                                <li class="blog-list3-desc">
+                                    <h4><a href="profile">{{ user.username }}</a></h4>
+                                    <ul class="admin_desc">
+                                        <li class="list_top"><i class="fa fa-phone-square ph"> </i>
+                                            <p class="m_2">{{ user.phone }}</p></li>
+                                        <div class="clearfix"> </div>
+                                        <li class="list_top"><i class="fa fa-envelope ph"> </i>
+                                            <p class="m_2"><a href="malito:mail@demolink.org">{{ user.email }}</a></p></li>
+                                        <div class="clearfix"> </div>
+                                    </ul>
+                                </li>
+                                <div class="clearfix"> </div>
+                            </ul>
+
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="grid_4">
+                <div class="col-md-7 grid_6">
+                    <h3>
+                        Want to host <br>
+                        or to be hosted?
+                    </h3>
+                </div>
+                <div class="col-md-5 grid_5">
+                    <div class="banner2">
+                        <a class="btn2" href="login" onclick="cambiar_sign_up()">click here</a>
+
+                        <h3>
+                            FOR A FREE <br>
+                            SIGN-UP
+                        </h3>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(
+                function () {
+                    $("#dateInputButton").change(
+                            function () {
+                                var key=document.getElementById('dateInputButton').value;
+
+                                $.ajax({
+                                    url : "research/"+key ,
+                                    success : function (result) {
+                                        $("#888").html(result);
+                                    }
+                                })
+                            }
+
+
+                    );
+
+                    $("#town").change(
+                            function () {
+                                var key= $( "#town option:selected" ).text();
+
+                                $.ajax({
+                                    url : "research1/"+key ,
+                                    success : function (result) {
+                                        $("#888").html(result);
+                                    }
+                                })
+                            }
+
+
+                    );
+
+
+                    $("#price").change(
+                            function () {
+                                var key1= $("#price").val();
+
+                                $.ajax({
+                                    url : "research2/"+key1 ,
+                                    success : function (result) {
+                                        $("#888").html(result);
+                                    }
+                                })
+                            }
+
+
+                    );
+                    $("#air").change(
+                            function () {
+                                var key2= $("#air").val();
+
+                                $.ajax({
+                                    url : "researchair/"+key2 ,
+                                    success : function (result) {
+                                        $("#888").html(result);
+                                    }
+                                })
+                            }
+
+
+                    );
+                    $("#fire").change(
+                            function () {
+                                var key3= $("#fire").val();
+
+                                $.ajax({
+                                    url : "researchfire/"+key3 ,
+                                    success : function (result) {
+                                        $("#888").html(result);
+                                    }
+                                })
+                            }
+
+
+                    );
+                    $("#wash").change(
+                            function () {
+                                var key3= $("#wash").val();
+
+                                $.ajax({
+                                    url : "researchwash/"+key3 ,
+                                    success : function (result) {
+                                        $("#888").html(result);
+                                    }
+                                })
+                            }
+
+
+                    );
+                    $("#tv").change(
+                            function () {
+                                var key3= $("#tv").val();
+
+                                $.ajax({
+                                    url : "researchtv/"+key3 ,
+                                    success : function (result) {
+                                        $("#888").html(result);
+                                    }
+                                })
+                            }
+
+
+                    );
+
+                }
+
+        );
+
+
+
+    </script>
+<script>
+    $(document).ready(
+            function () {
+                $("#home_u").attr("class","active scroll");
+            }
+    );
+</script>
+{% endblock %}
+

@@ -1,0 +1,118 @@
+{% for m in u.fkStayHouseid %}
+    <div id="{{ m.id }}">
+        <div class="standards">
+            <ul class="selectors_wrapper">
+                <li class="selector active" data-selector="1">Picture</li>
+            </ul>
+            <div class="standard_content" style="height: 439px;">
+                <div class="standard active" data-selector="1">
+                    <ul class="single_grid">
+
+                        {% for i in img[m.id] %}
+                            <li><img alt="Embedded Image" src="data:image/png;base64,{{ i }}"  height="250" width="200" /></li>
+                        {% endfor %}
+                        {#{% for i in img[m.id] |length ..2 %}
+                            <li><img src="{{asset ('bundles/stay/assets/images/s2.jpg')}}"  alt="" height="250" width="200"/></li>
+                        {% endfor %}
+                        #}
+                        <div class="clearfix"> </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-8 single_box1">
+            <table class="single_desc">
+                <tr><td><h4>Owner :		    </h4></td>  	<td>{{ m.fkUser.firstname }} {{ m.fkUser.lastname }}</td>		</tr>
+                <tr><td><h4>Adress			</h4></td>	    <td>{{ m.country }}, {{ m.town }}                    </td>		</tr>
+                <tr><td><h4>Price :		    </h4></td>		<td>{{ m.price }}                                   </td>    	</tr>
+                <tr><td><h4>Equipement :	</h4></td>		<td></td>	    </tr>
+                <tr><td><h4>Descreption :	</h4></td>	    <td>{{ m.description }}</td>		</tr>
+                <tr><td><h4>Rate :			</h4></td>		<td><div id="fr{{ m.id }}"></div></td>    	</tr>
+            </table>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="blog_list2">
+                <h2>Welcome back :</h2>
+                <ul class="blog-list3 list_1">
+                    <li class="blog-list3-desc">
+                        <h4>Have you enjoyed your stay :</h4>
+                        <ul class="admin_desc">
+                            <div class="rating" id="mr{{ m.id }}">
+
+                            </div>
+                            <div class="clearfix"> </div>
+                        </ul>
+                    </li>
+                    <div class="clearfix"> </div>
+                </ul>
+
+                <ul class="blog-list3 list_1">
+                    <li class="blog-list3-desc">
+                        <h4>Leave a note for others :</h4>
+                        <ul class="admin_desc">
+                            <textarea class="commenttext" id="c{{ m.id }}"> </textarea><BR/>
+                            <input type="button" value="Send" class="commentbutton" id="b{{ m.id }}">
+                            <div class="clearfix"> </div>
+                        </ul>
+                    </li>
+                    <div class="clearfix"> </div>
+                </ul>
+
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+{% endfor %}
+
+
+<script>
+
+    $(document).ready(
+            function(){
+                {% for m in u.fkStayHouseid %}
+                $("#fr{{ m.id }}").rateYo({
+                    rating:{{ m.rating }},
+                    readOnly: true
+                });
+
+                var mr{{ m.id }}=$("#mr{{ m.id }}").rateYo({
+                    rating:{{ mrs[m.id] }},
+                    fullStar:true
+                });
+
+                $("#mr{{ m.id }}").click(
+                        function () {
+                            var rate=mr{{ m.id }}.rateYo("rating");
+                            $.ajax({
+                                url:"rating/{{ m.id }}/"+rate,
+                                success:function (result) {
+                                    $("#elliji").html(result);
+                                }
+                            })
+                        });
+
+                {% endfor %}
+
+
+
+
+
+                $(".commentbutton").click(
+                        function () {
+                            var id=$(this).attr("id");
+                            id=id.substr(1,id.length);
+                            var cc=$("#c"+id).val();
+                            $.ajax({
+                                url:"add/"+id+"/"+cc,
+                                success:function (result) {
+                                    $("#notif").html(result);
+                                }
+                            })
+                        }
+                )
+            }
+    );
+</script>

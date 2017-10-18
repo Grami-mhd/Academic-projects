@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="{{asset ('bundles/admin/assets/img/favicon.ico')}}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Guest House Admin DashBoard</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{{asset ('bundles/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="{{asset ('bundles/admin/assets/css/animate.min.css')}}" rel="stylesheet"/>
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{{asset ('bundles/admin/assets/css/light-bootstrap-dashboard.css')}}" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{{asset ('bundles/admin/assets/css/demo.css')}}" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{{asset ('bundles/admin/assets/css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="{{asset ('bundles/admin/assets/img/sidebar-5.jpg')}}">
+
+        <!--
+
+            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+            Tip 2: you can also add an image using data-image tag
+
+        -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a class="simple-text">
+                    Guest House
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li >
+                    <a href="Admin_home">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="Admin_users">
+                        <i class="pe-7s-user"></i>
+                        <p>Manage Users</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="Admin_demends">
+                        <i class="pe-7s-note2"></i>
+                        <p>Forums Demands</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="Admin_rforums">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>R.Forums</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Admin_rmessages/0">
+                        <i class="pe-7s-mail"></i>
+                        <p>R.Messages</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="Admin_rcomments">
+                        <i class="pe-7s-comment"></i>
+                        <p>R.Comments</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="Admin_map">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="Admin_claims">
+                        <i class="pe-7s-bell"></i>
+                        <p>Claims</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="home">
+                        <i class="pe-7s-home"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Manage Users</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+
+                        <li>
+                            <a>
+                                <label>
+                                    <input type="text" name="searchkey" id="key"  placeholder="search here" style="padding-left: 10px; border-radius: 10px">
+                                    <i class="fa fa-search"></i>
+                                </label>
+                            </a>
+                        </li>
+                        <li><a><table>
+                                    <tr>
+                                        <td>
+                                            <p>enable modifications</p>
+                                        </td>
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" id="555">
+                                                <div class="slider round"></div>
+
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="Admin_profile">
+                                Account
+                            </a>
+                        <li>
+                            <a href="logout">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content" id="content">
+            <center>
+            <table>
+                {% for key , user in users %}
+                {% if loop.index-1 % 3 ==0 %}
+                <tr>
+                    <td>
+                {% else %}
+                    <td>
+                {% endif %}
+
+                    <div class="card" style="padding-left: 10px; padding-right: 10px">
+                        <div class="header">
+                            <h4 class="title">{{ user.firstname }} {{ user.lastname }}</h4>
+                            <p class="category">{{ user.email }}, {{ user.phone }}</p>
+                        </div>
+                        <div class="content">
+                            {% if user.picture is null %}
+                                <img src="{{asset ('bundles/guesthouse/UserImage.png')}}" alt="" height="270" width="245">
+                            {% else %}
+                                <img alt="Embedded Image" src="data:image/png;base64,{{ pictures[user.id] }}" height="270" width="245">
+                            {% endif %}
+                            <div class="footer">
+
+                                <hr>
+                                <div class="stats">
+                                    <i class="pe-7s-angle-right-circle"></i>IS ADMIN <input type="checkbox" id="{{ user.id }}" class="type" {% for role in user.roles %}
+                                        {% if role =="ROLE_ADMIN" %}
+                                            checked
+                                        {% endif %}
+                                    {% endfor %}
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+{#
+                    <div style="padding-left: 80px"> <center>
+                            {% if user.picture is null %}
+                            <img src="{{asset ('bundles/guesthouse/UserImage.png')}}" alt="" height="270" width="245">
+                            {% else %}
+                                <img alt="Embedded Image" src="data:image/png;base64,{{ pictures[user.id] }}" height="270" width="245">
+                            {% endif %}
+                            <h3 style="color: #122b40; font-weight: bold">{{ user.firstname }} {{ user.lastname }}</h3>
+                            <h5>{{ user.email }}, {{ user.phone }}</h5>
+                            <p> Adress :{{ user.country }}, {{ user.town }}</p>
+                            <p>IS ADMIN <input type="checkbox" id="{{ user.id }}" class="type" {% for role in user.roles %}
+                                                                                                {% if role =="ROLE_ADMIN" %}
+                                                                                                            checked
+                                                                                                {% endif %}
+                                                                                                {% endfor %}
+                                                                                                                           > </p>
+                            </center>
+                        </div> #}
+
+                    </td>
+                {% if loop.index %3 ==0 %}
+                     </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+            </center>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="{{asset ('bundles/admin/assets/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
+<script src="{{asset ('bundles/admin/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="{{asset ('bundles/admin/assets/js/bootstrap-checkbox-radio-switch.js')}}"></script>
+
+<!--  Charts Plugin -->
+<script src="{{asset ('bundles/admin/assets/js/chartist.min.js')}}"></script>
+
+<!--  Notifications Plugin    -->
+<script src="{{asset ('bundles/admin/assets/js/bootstrap-notify.js')}}"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{{asset ('bundles/admin/assets/js/light-bootstrap-dashboard.js')}}"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{{asset ('bundles/admin/assets/js/demo.js')}}"></script>
+<script id="notifs"></script>
+<script>
+    $(document).ready(
+            function () {
+
+                $(".type").attr("disabled", true);
+                $("#555").change(function() {
+                            if($(this).is(':checked')){
+                                $(".type").removeAttr("disabled");
+                            }
+                            else
+                            {
+                                $(".type").attr("disabled", true);
+                            }
+                            }
+
+                            );
+                $("#key").keyup(
+                function () {
+                    var p=document.getElementById("key").value;
+                    $.ajax({
+                        url: "Admin_userssearch/" + p,
+                       success :function (result) {
+                           $("#content").html(result);
+                       }
+                    })
+                }
+                );
+
+
+                $(".type").change(
+                        function () {
+                            var p =$(this).attr("id");
+                            if($(this).is(':checked')){
+                                $.ajax({
+                                    url: "toadmin/" + p,
+                                    success :function (result) {
+                                        $("#notifs").html(result);
+                                    }
+                                })
+                            }else{
+                                $.ajax({
+                                    url: "unadmin/" + p,
+                                    success :function (result) {
+                                        $("#notifs").html(result);
+                                    }
+                                })
+                            }
+
+                        }
+                );
+
+            }
+
+
+
+    );
+</script>
+</html>

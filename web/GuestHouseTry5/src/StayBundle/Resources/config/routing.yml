@@ -1,0 +1,23 @@
+stay_stays:
+    path:     /stays
+    defaults: { _controller: StayBundle:Stay:affiche }
+
+stay_finish:
+    path:     /finish/{id}
+    defaults: { _controller: StayBundle:Stay:finish }
+
+stay_confirm:
+    path:     /confirm/{nbr}
+    defaults: { _controller: StayBundle:Stay:confirm }
+
+stay_addComment:
+    path:     /add/{id}/{cc}
+    defaults: { _controller: StayBundle:Stay:addComment }
+
+stay_rating:
+    path:     /rating/{id}/{r}
+    defaults: { _controller: StayBundle:Stay:rating }
+
+stay_hosting:
+    path:     /hosting
+    defaults: { _controller: StayBundle:Stay:hosting }

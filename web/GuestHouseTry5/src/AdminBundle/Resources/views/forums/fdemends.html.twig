@@ -1,0 +1,106 @@
+
+    {% for forum in forums %}
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="header">
+
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <h4 class="dropdown" style="padding-bottom: 20px" >
+
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        {% if forum.fkForumOwnerid.picture is null %}
+                                            <img src="{{asset ('bundles/admin/assets/img/UserMiniImage.png')}}">
+                                        {% else %}
+                                            <img alt="Embedded Image" src="data:image/png;base64,{{ images[forum.fkForumOwnerid.id] }}" height="50" width="50">
+                                        {% endif %}
+
+                                        {{ forum.fkForumOwnerid.firstname }} {{ forum.fkForumOwnerid.lastname }}
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a>First Name :{{ forum.fkForumOwnerid.firstname }}</a></li>
+                                        <li><a>Last Name :{{ forum.fkForumOwnerid.lastname }}</a></li>
+                                        <li><a>Email :{{ forum.fkForumOwnerid.email }}</a></li>
+                                        <li><a>Points :{{ forum.fkForumOwnerid.points }}</a></li>
+                                        <li><a>Adress :{{ forum.fkForumOwnerid.country }}{{ forum.fkForumOwnerid.town }}</a></li>
+                                    </ul>
+
+                                </h4>
+                            </li>
+
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown" >
+                                {% if other[forum.fkForumOwnerid.id]|length ==0 %}
+                            <li><a href="#" style="color: #204d74">no other discussions</a></li>
+                            {% else %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #204d74">
+                                    other active discussions
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    {% for f in other[forum.fkForumOwnerid.id] %}
+                                        <li><a href="#">{{ f.subject }} :<b style="color: rebeccapurple">{{ numbers[f.id] }} messages</b></a></li>
+                                    {% endfor %}
+
+
+                                </ul>
+                            {% endif %}
+                            </li>
+                            <li class="accept" id="{{ forum.id }}">
+                                <a href="#">
+                                    <i class="pe-7s-like2" ></i>
+                                    accept
+                                </a>
+                            </li>
+
+                            <li class="decline" id="*{{ forum.id }}">
+                                <a href="#" style="color: red">
+                                    <i class="pe-7s-junk"></i>
+                                    decline
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="category" style="font-size: 20px">{{ forum.subject  }}</p>
+
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".accept").click(
+                    function () {
+                        var id= $(this).attr("id");
+                        $.ajax({
+                            url: "acceptforum/" + id,
+                            success :function (result) {
+                                $("#content").html(result);
+                            }
+                        })
+                    }
+            );
+            $(".decline").click(
+                    function () {
+                        var id= $(this).attr("id");
+                        id=id.substr(1,id.length);
+
+                        $.ajax({
+                            url: "declineforum/" + id,
+                            success :function (result) {
+                                $("#content").html(result);
+                            }
+                        })
+                    }
+            );
+        });
+    </script>
